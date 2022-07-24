@@ -1,4 +1,4 @@
-const kCW = require(__dirname + '/../enums/kCW');
+const kCW = require('./../enums/kCW');
 
 class BitStream {
 
@@ -64,9 +64,9 @@ class BitStream {
 
     vChunk () {
         let size = this.varInt32();
-        let buffer = Buffer.alloc(size);
+        let buffer = new Uint8Array(size);
         for (let i = 0; i < size; i++) {
-            buffer.writeUInt8(this.byte(), i);
+            buffer[i] = this.byte();
         }
         return new BitStream(buffer);
     }

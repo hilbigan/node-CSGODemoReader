@@ -1,4 +1,4 @@
-const UMSG = require(__dirname + '/../enums/UserMessages');
+const UMSG = require('./../enums/UserMessages');
 
 let Messages = {};
 module.exports = Messages;

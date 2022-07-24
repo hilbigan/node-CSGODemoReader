@@ -1,23 +1,23 @@
 const EventEmitter = require('events');
-const BitStream = require(__dirname + '/BitStream');
-const Entity = require(__dirname + '/Entities/Entity');
+const BitStream = require('./BitStream');
+const Entity = require('./Entities/Entity');
 
-const Protos = require(__dirname + '/../protos/');
-let NetMessages = require(__dirname + '/../enums/NetMessages');
-let Commands = require(__dirname + '/../enums/Commands');
-let PacketEntities = require(__dirname + '/../enums/PacketEntities');
-let UserMessages = require(__dirname + '/../enums/UserMessages');
+const Protos = require('./../protos/');
+let NetMessages = require('./../enums/NetMessages');
+let Commands = require('./../enums/Commands');
+let PacketEntities = require('./../enums/PacketEntities');
+let UserMessages = require('./../enums/UserMessages');
 
 const EntitiesMap ={
-	Player: require(__dirname + '/Entities/Player'),
-	Team: require(__dirname + '/Entities/Team'),
-	DecoyGrenade: require(__dirname + '/Entities/DecoyGrenade'),
-	Flashbang: require(__dirname + '/Entities/Flashbang'),
-	HEGrenade: require(__dirname + '/Entities/HEGrenade'),
-	Grenade: require(__dirname + '/Entities/Grenade'),
-	MolotovGrenade: require(__dirname + '/Entities/MolotovGrenade'),
-	SmokeGrenade: require(__dirname + '/Entities/SmokeGrenade'),
-	Weapon: require(__dirname + '/Entities/Weapon')
+	Player: require('./Entities/Player'),
+	Team: require('./Entities/Team'),
+	DecoyGrenade: require('./Entities/DecoyGrenade'),
+	Flashbang: require('./Entities/Flashbang'),
+	HEGrenade: require('./Entities/HEGrenade'),
+	Grenade: require('./Entities/Grenade'),
+	MolotovGrenade: require('./Entities/MolotovGrenade'),
+	SmokeGrenade: require('./Entities/SmokeGrenade'),
+	Weapon: require('./Entities/Weapon')
 }
 
 class Demo extends EventEmitter {
@@ -63,7 +63,7 @@ class Demo extends EventEmitter {
 		while(this.running){
 
 			let command = this.stream.byte();
-			if (command === undefined){
+			if (!command){
 				this.running = false;
 				this.emit('end');
 			}
@@ -113,6 +113,8 @@ class Demo extends EventEmitter {
 					this.stream.skip(this.stream.int32());
 					break;
 
+                default:
+                    console.log("Unknown Command " + command);
 			}
 
 			if(this.tick > 0){

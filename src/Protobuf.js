@@ -3,20 +3,45 @@ class Protobuf {
 	constructor () {
 		this.enums = {};
 		this.messages = {};
+
+        this.require('../protos/Common.js');
 	}
 
-	require (path, namespace) {
-		let scheme = require(path);
-		
+	require (path, namespaceX) {
+        let scheme = null;
+        let namespace = null;
+
+		scheme = require('../protos/Common.js');
+        namespace = "Common";
 		for(let msg_name in scheme){
-
 			let msg_scheme = scheme[msg_name];
-
 			if(typeof namespace != 'undefined')
 				msg_name = namespace + '/' + msg_name;
-				
 			this.require_msg(this, msg_name, msg_scheme);
-
+		}
+		scheme = require('../protos/GCMessages.js');
+        namespace = "GCMessages";
+		for(let msg_name in scheme){
+			let msg_scheme = scheme[msg_name];
+			if(typeof namespace != 'undefined')
+				msg_name = namespace + '/' + msg_name;
+			this.require_msg(this, msg_name, msg_scheme);
+		}
+		scheme = require('../protos/NetMessages.js');
+        namespace = "NetMessages";
+		for(let msg_name in scheme){
+			let msg_scheme = scheme[msg_name];
+			if(typeof namespace != 'undefined')
+				msg_name = namespace + '/' + msg_name;
+			this.require_msg(this, msg_name, msg_scheme);
+		}
+		scheme = require('../protos/UserMessages.js');
+        namespace = "UserMessages";
+		for(let msg_name in scheme){
+			let msg_scheme = scheme[msg_name];
+			if(typeof namespace != 'undefined')
+				msg_name = namespace + '/' + msg_name;
+			this.require_msg(this, msg_name, msg_scheme);
 		}
 	}
 
@@ -35,12 +60,13 @@ class Protobuf {
 		for(let field in msg_scheme.fields){
 
 			field = msg_scheme.fields[field];
+            console.log(field);
 			
 			if(typeof msg.messages[field[2]] != 'undefined'){
 				field[2] = msg.messages[field[2]];
 			}else if(typeof this.getMessage(field[2] ) != 'undefined'){
 				field[2] = this.getMessage(field[2]);
-			}else if(field[2].indexOf('.') > -1){
+			}else if((""+field[2]).indexOf('.') > -1){
 
 				let s = field[2].split('.');
 				let m = this.getMessage(s[0]);

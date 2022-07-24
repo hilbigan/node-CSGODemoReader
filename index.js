@@ -1,10 +1,10 @@
-const Reader = require(`${__dirname}/src/Reader`);
-const Vector3 = require(`${__dirname}/src/Vector3`);
-const MathHelpers = require(`${__dirname}/src/MathHelpers`);
+const Reader = require(`./src/Reader`);
+const Vector3 = require(`./src/Vector3`);
+const MathHelpers = require(`./src/MathHelpers`);
 
-const UserMessages = require(`${__dirname}/enums/UserMessages`);
-const Teams = require(`${__dirname}/enums/Teams`);
-const WeaponTypes = require(`${__dirname}/enums/WeaponTypes`);
+const UserMessages = require(`./enums/UserMessages`);
+const Teams = require(`./enums/Teams`);
+const WeaponTypes = require(`./enums/WeaponTypes`);
 
 module.exports = {
     Reader,

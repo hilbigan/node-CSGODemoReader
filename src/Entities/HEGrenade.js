@@ -1,4 +1,4 @@
-const Grenade = require(__dirname + '/Grenade');
+const Grenade = require('./Grenade');
 
 class HEGrenade extends Grenade {
 

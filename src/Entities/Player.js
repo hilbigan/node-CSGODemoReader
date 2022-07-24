@@ -1,6 +1,6 @@
-const Entity = require(`${__dirname}/Entity`);
-const Vector3 = require(`${__dirname}/../Vector3`);
-const MathHelpers = require(`${__dirname}/../MathHelpers`);
+const Entity = require(`./Entity`);
+const Vector3 = require(`./../Vector3`);
+const MathHelpers = require(`./../MathHelpers`);
 
 class Player extends Entity {
 

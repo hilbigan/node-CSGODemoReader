@@ -1,4 +1,4 @@
-const MSG = require(__dirname + '/../enums/NetMessages');
+const MSG = require('./../enums/NetMessages');
 
 let Messages = {};
 module.exports = Messages;

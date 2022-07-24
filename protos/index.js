@@ -1,9 +1,10 @@
-const ProtoBuf = require(__dirname + '/../src/Protobuf');
+const ProtoBuf = require('./../src/Protobuf');
 let proto = new ProtoBuf();
 
-proto.require(__dirname + '/Common', 'Common');
-proto.require(__dirname + '/GCMessages', 'GCMessages');
-proto.require(__dirname + '/NetMessages', 'NetMessages');
-proto.require(__dirname + '/UserMessages', 'UserMessages');
+proto.require(null, null);
+//proto.require('../protos/Common.js', 'Common');
+//proto.require('../protos/GCMessages', 'GCMessages');
+//proto.require('../protos/NetMessages', 'NetMessages');
+//proto.require('../protos/UserMessages', 'UserMessages');
 
 module.exports = proto;

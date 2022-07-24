@@ -1,5 +1,5 @@
-const kCW = require(__dirname + '/../../enums/kCW');
-const SPROP = require(__dirname + '/../../enums/SPROP');
+const kCW = require('./../../enums/kCW');
+const SPROP = require('./../../enums/SPROP');
 
 class Entity {
 

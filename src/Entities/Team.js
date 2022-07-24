@@ -1,4 +1,4 @@
-const Entity = require(__dirname + '/Entity');
+const Entity = require('./Entity');
 
 class Team extends Entity {
 

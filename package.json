@@ -24,5 +24,9 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/SzymonLisowiec/node-CSGODemoReader.git"
-	}
+	},
+	"dependencies": {
+		"events": "^3.3.0"
+	},
+	"devDependencies": {}
 }
