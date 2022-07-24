@@ -46,19 +46,17 @@ class Demo extends EventEmitter {
 
 		this.running = 2;
 
-		let demo_header = {
-			'filestamp': this.stream.string(8),
-			'demo_protocol': this.stream.int32(),
-			'network_protocol': this.stream.int32(),
-			'server_name': this.stream.string(260),
-			'client_name': this.stream.string(260),
-			'map_name': this.stream.string(260),
-			'game_directory': this.stream.string(260),
-			'playback_time': this.stream.float(),
-			'playback_ticks': this.stream.int32(),
-			'playback_frames': this.stream.int32(),
-			'signOnLength': this.stream.int32()
-		};
+		this.filestamp = this.stream.string(8);
+		this.demo_protocol = this.stream.int32();
+		this.network_protocol = this.stream.int32();
+		this.server_name = this.stream.string(260);
+		this.client_name = this.stream.string(260);
+		this.map_name = this.stream.string(260);
+		this.game_directory = this.stream.string(260);
+		this.playback_time = this.stream.float();
+		this.playback_ticks = this.stream.int32();
+		this.playback_frames = this.stream.int32();
+		this.signOnLength = this.stream.int32();
 		
 		while(this.running){
 
