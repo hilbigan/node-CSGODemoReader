@@ -81,7 +81,8 @@ class Entity {
         for (let i = 0; i < parts.length - 1; i++) {
             if (parts[i] != 'baseclass') {
                 if (data[parts[i]] == null) {
-                    data[parts[i]] = {};
+                    data = {};
+                    break;
                 }
                 data = data[parts[i]];
             }
@@ -93,7 +94,6 @@ class Entity {
     }
 
     decodeProperty(stream, fieldIndex, _property) {
-
         const flattenedProp = _property || this.classInfo.flattenedProps[fieldIndex];
         if (flattenedProp == null) {
             return null;

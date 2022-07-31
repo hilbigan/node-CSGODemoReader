@@ -234,6 +234,12 @@ class BitStream {
                 this.bufferedBits = this.takeByte();
                 this.bitsAvailable = 8;
             }
+            if (this.bitsAvailable == 8 && (bits - i - 1) >= 8) {
+                ret |= this.bufferedBits << i;
+                this.bitsAvailable = 0;
+                i += 7;
+                continue;
+            }
             ret |= ((this.bufferedBits >> (8 - this.bitsAvailable--)) & 1) << i;
         }
         return ret;

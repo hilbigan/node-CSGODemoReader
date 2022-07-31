@@ -128,7 +128,10 @@ class Demo extends EventEmitter {
     }
 
 	getTeams () {
-		return this.getEntities(EntitiesMap.Team);
+        if (!this.teamCache) {
+            this.teamCache = this.getEntities(EntitiesMap.Team);
+        }
+        return this.teamCache;
 	}
 
 	getPlayers () {
@@ -812,6 +815,11 @@ class Demo extends EventEmitter {
 			entity = new entity_class(this);
 			entity.entityId = entityId;
 			this.entities.push(entity);
+
+            if (!this.entitiesById) {
+                this.entitiesById = {};
+            }
+            this.entitiesById[entityId] = entity;
 		}
 		if(entity instanceof EntitiesMap.Player){
 			entity.info = this.players[entity.entityId - 1];
@@ -831,11 +839,7 @@ class Demo extends EventEmitter {
 	}
 	
 	findEntityById (entityId) {
-		for(let i = 0; i < this.entities.length; i++){
-			if(this.entities[i].entityId == entityId){
-				return this.entities[i];
-			}
-		}
+        return this.entitiesById && this.entitiesById[entityId];
 	}
 	
 	findEntityByUserId (userId) {

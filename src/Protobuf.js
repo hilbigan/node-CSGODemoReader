@@ -60,7 +60,6 @@ class Protobuf {
 		for(let field in msg_scheme.fields){
 
 			field = msg_scheme.fields[field];
-            console.log(field);
 			
 			if(typeof msg.messages[field[2]] != 'undefined'){
 				field[2] = msg.messages[field[2]];
